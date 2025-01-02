@@ -21,9 +21,25 @@ embedded_instances {
   "    y: 17.0\n"
   "  }\n"
   "}\n"
+  "embedded_components {\n"
+  "  id: \"text_display_label\"\n"
+  "  type: \"label\"\n"
+  "  data: \"size {\\n"
+  "  x: 32.0\\n"
+  "  y: 32.0\\n"
+  "}\\n"
+  "text: \\\"player\\\"\\n"
+  "font: \\\"/builtins/fonts/default.font\\\"\\n"
+  "material: \\\"/builtins/fonts/label-df.material\\\"\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 75.0\n"
+  "    y: 84.0\n"
+  "  }\n"
+  "}\n"
   ""
   position {
-    x: 20.0
+    x: 10.0
     y: 11.0
   }
 }

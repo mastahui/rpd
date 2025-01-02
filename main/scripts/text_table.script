@@ -1,0 +1,9 @@
+--Functional text table file
+-- Text events perform the action of the player
+-- format of playing text-> Player gains this item to inventory 
+-- example card text 
+PLAYER = "player"
+OPPONENT = "opponent"
+OBJECT = "object"
+
+targets = {PLAYER = "player", OPPONENT = "opponent", OBJECT = "object"}
