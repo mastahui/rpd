@@ -1,0 +1,10 @@
+images {
+  image: "/assets/sprites/wuchacrab.png"
+}
+images {
+  image: "/assets/sprites/wuchacup.png"
+}
+images {
+  image: "/assets/sprites/wuchaflexright.png"
+}
+extrude_borders: 2

@@ -4,4 +4,10 @@ images {
 images {
   image: "/assets/sprites/player.png"
 }
+images {
+  image: "/assets/sprites/bg.png"
+}
+images {
+  image: "/assets/sprites/text_label.png"
+}
 extrude_borders: 2

@@ -1,0 +1,31 @@
+health = 10
+health_string = "Health: %s"
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	self.message = ""
+	self.text_list = {}
+end
+
+function on_input(self, action_id, action)
+	-- check for touching action to create a new label
+	if action_id == hash("touch") and action.pressed then
+		local mouse_pos = vmath.vector3(action.x, action.y, 1.0)
+		local word = factory.create("#wordfactory", vmath.vector3(100.0,100.0,1.0))
+	end
+	if action_id == hash("type") then
+		self.message = self.message..action.text
+		label.set_text("#typed", self.message)
+	elseif action_id == hash("backspace") and action.repeated then
+		local length = string.len(self.message)
+		self.message = string.sub(self.message, 0, length-1)
+		label.set_text("#typed", self.message)
+	elseif action_id == hash("submit") and action.pressed then
+		local word = factory.create("#wordfactory", vmath.vector3(100.0,100.0,1.0))
+		table.insert(self.text_list, word)
+		print(self.text_list)	
+	end
+	
+end
+
+function update()
+end
