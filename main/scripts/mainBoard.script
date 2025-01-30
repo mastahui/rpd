@@ -1,9 +1,9 @@
 health = 10
 health_string = "Health: %s"
+local text_list = {}
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.message = ""
-	self.text_list = {}
 end
 
 function on_input(self, action_id, action)
@@ -19,13 +19,12 @@ function on_input(self, action_id, action)
 		local length = string.len(self.message)
 		self.message = string.sub(self.message, 0, length-1)
 		label.set_text("#typed", self.message)
-	elseif action_id == hash("submit") and action.pressed then
-		local word = factory.create("#wordfactory", vmath.vector3(100.0,100.0,1.0))
-		table.insert(self.text_list, word)
-		print(self.text_list)	
+	elseif action_id == hash("submit") and action.released then
+		local x = 100.0 * table.maxn(text_list)
+		local y = 100.0
+		local current_position = vmath.vector3(x,y,1.0)
+		local word = factory.create("#wordfactory", current_position)
+		table.insert(text_list, word)
+		
 	end
-	
-end
-
-function update()
 end

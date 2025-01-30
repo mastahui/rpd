@@ -3,7 +3,7 @@ components {
   component: "/main/scripts/text.script"
 }
 embedded_components {
-  id: "gameWord"
+  id: "gameword"
   type: "label"
   data: "size {\n"
   "  x: 128.0\n"
