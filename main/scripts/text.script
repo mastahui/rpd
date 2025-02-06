@@ -3,21 +3,12 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash(message_id) then
-		local position_change = vmath.vector3(0,1,0)
-		print(go.get_position("."))
+		--print(go.get_position("."))
 		label.set_text("#gameword",message["message"])
-		go.set_position(go.get_position(".") + position_change)
-		print(go.get_position("."))
-		
-		
 	end
 end
 -- swinging function to go in update
 local function spring()
-	local current_position = go.get_position(".")
-	if current_position > swing_range["max"] then
-	end
 end
 function update(self, dt)
-	go.get_position(".")
 end

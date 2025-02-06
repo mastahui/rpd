@@ -24,7 +24,7 @@ embedded_instances {
   "material: \\\"/builtins/fonts/label-df.material\\\"\\n"
   "\"\n"
   "  position {\n"
-  "    y: 173.0\n"
+  "    y: -150.0\n"
   "  }\n"
   "}\n"
   "embedded_components {\n"
