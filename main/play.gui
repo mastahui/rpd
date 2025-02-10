@@ -1,36 +1,48 @@
 script: "/main/scripts/play_mat.gui_script"
+fonts {
+  name: "default"
+  font: "/builtins/fonts/default.font"
+}
+textures {
+  name: "player_sprite"
+  texture: "/assets/sprites/player_sprite.atlas"
+}
 nodes {
   position {
     x: 109.0
-    y: 64.0
+    y: 89.0
   }
-  size {
-    x: 200.0
-    y: 100.0
+  scale {
+    x: 0.5
+    y: 0.5
+    z: 0.5
   }
   type: TYPE_BOX
+  texture: "player_sprite/wuchacrab"
   id: "box"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
-    x: 851.0
+    x: 890.0
     y: 64.0
   }
-  size {
-    x: 200.0
-    y: 100.0
+  scale {
+    x: 0.5
+    y: 0.5
+    z: 0.5
   }
   type: TYPE_BOX
+  texture: "player_sprite/wuchaflexright"
   id: "box1"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
-    x: 426.0
-    y: 155.0
+    x: 468.0
+    y: 180.0
   }
   size {
     x: 200.0
@@ -38,8 +50,25 @@ nodes {
   }
   type: TYPE_TEXT
   text: "<text>"
-  id: "text"
+  font: "default"
+  id: "Entry"
   inherit_alpha: true
+}
+nodes {
+  position {
+    y: 104.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+  type: TYPE_BOX
+  texture: "player_sprite/wuchacrab"
+  id: "box2"
+  parent: "Entry"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

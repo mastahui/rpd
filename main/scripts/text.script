@@ -1,12 +1,35 @@
-function init(self)
+local possible_subjects = {"i", "you"}
+local first_subject = ""
+local first_flavor = ""
+local action_verb = ""
+local second_flavor = ""
+local second_subject = ""
+local sentence = {first_subject, first_flavor, action_verb, second_flavor, second_subject}
+
+function init(self)	
+end
+
+local function parse_message(message)
+	-- take in the input string message
+	-- create conditions to make the subtrings
+	-- to get the first subjects take the first character to the first space
+	if string.lower(string.sub(message, 1,2)) == "i " then
+		first_subject = string.sub(message,1, 2)
+		print(first_subject)
+	end
 end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash(message_id) then
 		--print(go.get_position("."))
+		current_typed_text = message["message"]
+		parse_message(current_typed_text)
 		label.set_text("#gameword",message["message"])
 	end
 end
+
+
+
 -- swinging function to go in update
 local function spring()
 end

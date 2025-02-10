@@ -5,6 +5,6 @@ images {
   image: "/assets/sprites/wuchacup.png"
 }
 images {
-  image: "/assets/sprites/wuchaflexright.png"
+  image: "/main/wuchaflexright.png"
 }
 extrude_borders: 2

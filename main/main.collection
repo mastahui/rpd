@@ -3,8 +3,8 @@ scale_along_z: 0
 embedded_instances {
   id: "player"
   data: "components {\n"
-  "  id: \"mainBoard\"\n"
-  "  component: \"/main/scripts/board_controller.script\"\n"
+  "  id: \"play\"\n"
+  "  component: \"/main/play.gui\"\n"
   "}\n"
   "embedded_components {\n"
   "  id: \"wordfactory\"\n"
@@ -12,35 +12,14 @@ embedded_instances {
   "  data: \"prototype: \\\"/assets/objects/word_button.go\\\"\\n"
   "\"\n"
   "}\n"
-  "embedded_components {\n"
-  "  id: \"typed\"\n"
-  "  type: \"label\"\n"
-  "  data: \"size {\\n"
-  "  x: 128.0\\n"
-  "  y: 32.0\\n"
-  "}\\n"
-  "text: \\\"\\\\\\\"Enter your message...\\\\\\\"\\\"\\n"
-  "font: \\\"/builtins/fonts/default.font\\\"\\n"
-  "material: \\\"/builtins/fonts/label-df.material\\\"\\n"
-  "\"\n"
-  "  position {\n"
-  "    y: -150.0\n"
-  "  }\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"sprite\"\n"
-  "  type: \"sprite\"\n"
-  "  data: \"default_animation: \\\"wuchacup\\\"\\n"
-  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
-  "textures {\\n"
-  "  sampler: \\\"texture_sampler\\\"\\n"
-  "  texture: \\\"/assets/sprites/player_sprite.atlas\\\"\\n"
-  "}\\n"
-  "\"\n"
-  "}\n"
   ""
   position {
-    x: 300.0
-    y: 400.0
+    x: 100.0
+    y: 291.0
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
   }
 }
