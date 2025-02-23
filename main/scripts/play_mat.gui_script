@@ -1,48 +1,43 @@
-Health = 10
-Health_string = "Health: %s"
-Text_message = {}
-local current_typed_message = {}
-local text_positions = {}
+--local Text_message = {}
+local message_indices = {}
+local num_messages = 1
+local message_objects = {}
+
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.message = ""
-end
-
+end	
 function on_input(self, action_id, action)
 	-- check for touching action to create a new label
 	local text = gui.get_node("Entry")
-	if action_id == hash("touch") and action.pressed then
-		local mouse_pos = vmath.vector3(action.x, action.y, 1.0)
-		local word = factory.create("#wordfactory", vmath.vector3(100.0,100.0,1.0))
+	if text ~= nil then
+		if action_id == hash("type") then
+			if string.len(self.message)%40 == 0 then
+				self.message = self.message..'\n'
+			end
+			self.message = self.message..action.text
+			gui.set_text(text, self.message)
+		end
+		if action_id == hash("backspace") and action.repeated then
+			local length = string.len(self.message)
+			self.message = string.sub(self.message, 0, length-1)
+			--label.set_text("#Entry", self.message)
+			gui.set_text(text, self.message)
+		end
+		if action_id == hash("submit") and action.released then
+			local size = gui.get(text, "size")
+			local position = vmath.vector3(size.x,(size.y /2) + 150.0, 1.0)
+			local current_position = vmath.vector3(position.x,position.y,1.0)
+			local id = factory.create("#wordfactory", current_position)
+			table.insert(message_objects, id)
+			local information = {message_t=self.message, placement=num_messages, objects=message_objects}
+			table.insert(message_indices, self.message)
+			msg.post(id, self.message, information)
+			self.message = ""
+			num_messages = num_messages + 1
+			msg.post("player#board", "stack", message_objects)
+		end
 	end
-	if action_id == hash("type") then
-		self.message = self.message..action.text
-		gui.set_text(text, self.message)
-	elseif action_id == hash("backspace") and action.repeated then
-		local length = string.len(self.message)
-		self.message = string.sub(self.message, 0, length-1)
-		--label.set_text("#Entry", self.message)
-		gui.set_text(text, self.message)
-	elseif action_id == hash("submit") and action.released then
-		local button_width = 50
-		local button_height = 50
-		local x_position = button_width * table.maxn(Text_message)
-		local y_position = button_height * table.maxn(Text_message)
-		local current_position = vmath.vector3(x_position,y_position,1.0)
-		print(table.maxn(Text_message))
-		local id = factory.create("#wordfactory", current_position)
-		Text_message["message"] = self.message
-		Text_message["message_position"] = current_position
-		table.insert(Text_message, "message")
-		msg.post(id, self.message, Text_message)
-	end
-	-- for var= max,min,step
-	-- do function
-	-- end loop
-end
-
-function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Learn more: https://defold.com/manuals/message-passing/
-	-- Remove this function if not needed
+	
 end

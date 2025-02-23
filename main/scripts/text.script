@@ -1,37 +1,32 @@
-local possible_subjects = {"i", "you"}
-local first_subject = ""
-local first_flavor = ""
-local action_verb = ""
-local second_flavor = ""
-local second_subject = ""
-local sentence = {first_subject, first_flavor, action_verb, second_flavor, second_subject}
+local received_text = ""
+local message_spots = {150,250,350,450,550,650}
 
-function init(self)	
+go.property("current_index", nil)
+
+function init(self)
 end
 
-local function parse_message(message)
-	-- take in the input string message
-	-- create conditions to make the subtrings
-	-- to get the first subjects take the first character to the first space
-	if string.lower(string.sub(message, 1,2)) == "i " then
-		first_subject = string.sub(message,1, 2)
-		print(first_subject)
-	end
+local function place_message(total, object_list)
+	for i=1, total, 1 do
+		if i > 6 then
+			break
+		end
+		
+		local current_object_position = go.get(object_list[i], "position")
+		--print("The current objects position is ",current_object_position)
+		go.set(object_list[i], "position", vmath.vector3(current_object_position.x, message_spots[i], 1.0))
+		--print("The new position for the object is ",current_object_position)
+	end	
 end
+
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash(message_id) then
-		--print(go.get_position("."))
-		current_typed_text = message["message"]
-		parse_message(current_typed_text)
-		label.set_text("#gameword",message["message"])
+		received_text = message["message_t"]
+		label.set_text("#gameword",received_text)
+		place_message(message["placement"], message["objects"])
+		local current_position = go.get(".", "position")
+		self.current_index = message["placement"]
+		print("this is the current index:", self.current_index)
 	end
-end
-
-
-
--- swinging function to go in update
-local function spring()
-end
-function update(self, dt)
 end

@@ -6,6 +6,10 @@ embedded_instances {
   "  id: \"play\"\n"
   "  component: \"/main/play.gui\"\n"
   "}\n"
+  "components {\n"
+  "  id: \"board\"\n"
+  "  component: \"/main/scripts/board_controller.script\"\n"
+  "}\n"
   "embedded_components {\n"
   "  id: \"wordfactory\"\n"
   "  type: \"factory\"\n"
@@ -13,13 +17,4 @@ embedded_instances {
   "\"\n"
   "}\n"
   ""
-  position {
-    x: 100.0
-    y: 291.0
-  }
-  scale3 {
-    x: 0.5
-    y: 0.5
-    z: 0.5
-  }
 }

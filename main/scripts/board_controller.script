@@ -1,40 +1,8 @@
-Health = 10
-Health_string = "Health: %s"
-Text_message = {}
-local current_typed_message = {}
-local text_positions = {}
-function init(self)
-	msg.post(".", "acquire_input_focus")
-	self.message = ""
+local message_list = {}
+function on_message(self, message_id, message)
+	if message_id == hash("stack") then
+		print("In board controller")
+		message_list = message
+		for i=1, table.maxn(message_list) do print(message_list[i]) end
+	end
 end
-
---[[function on_input(self, action_id, action)
-	-- check for touching action to create a new label
-	if action_id == hash("touch") and action.pressed then
-		local mouse_pos = vmath.vector3(action.x, action.y, 1.0)
-		local word = factory.create("#wordfactory", vmath.vector3(100.0,100.0,1.0))
-	end
-	if action_id == hash("type") then
-		self.message = self.message..action.text
-		label.set_text("#typed", self.message)
-	elseif action_id == hash("backspace") and action.repeated then
-		local length = string.len(self.message)
-		self.message = string.sub(self.message, 0, length-1)
-		label.set_text("#typed", self.message)
-	elseif action_id == hash("submit") and action.released then
-		local button_width = 50
-		local button_height = 50
-		local x_position = button_width * table.maxn(Text_message)
-		local y_position = button_height * table.maxn(Text_message)
-		local current_position = vmath.vector3(x_position,y_position,1.0)
-		print(table.maxn(Text_message))
-		local id = factory.create("#wordfactory", current_position)
-		Text_message["message"] = self.message
-		Text_message["message_position"] = current_position
-		table.insert(Text_message, "message")
-		msg.post(id, self.message, Text_message)
-	end
-	-- for var= max,min,step
-	-- do function
-	-- end loop
-end]]--

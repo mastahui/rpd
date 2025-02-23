@@ -9,8 +9,8 @@ textures {
 }
 nodes {
   position {
-    x: 109.0
-    y: 89.0
+    x: 65.0
+    y: 66.0
   }
   scale {
     x: 0.5
@@ -19,14 +19,14 @@ nodes {
   }
   type: TYPE_BOX
   texture: "player_sprite/wuchacrab"
-  id: "box"
+  id: "delete"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
     x: 890.0
-    y: 64.0
+    y: 80.0
   }
   scale {
     x: 0.5
@@ -35,18 +35,33 @@ nodes {
   }
   type: TYPE_BOX
   texture: "player_sprite/wuchaflexright"
-  id: "box1"
+  id: "submit"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
-    x: 468.0
-    y: 180.0
+    y: 100.0
   }
   size {
     x: 200.0
     y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "SUBMIT MESSAGE"
+  font: "default"
+  id: "text"
+  parent: "submit"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 468.0
+    y: 50.0
+  }
+  size {
+    x: 200.0
+    y: 5.0
   }
   type: TYPE_TEXT
   text: "<text>"
@@ -56,7 +71,7 @@ nodes {
 }
 nodes {
   position {
-    y: 104.0
+    y: 100.0
   }
   scale {
     x: 0.5
@@ -65,7 +80,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "player_sprite/wuchacrab"
-  id: "box2"
+  id: "sprite"
   parent: "Entry"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
