@@ -1,11 +1,11 @@
 local received_text = ""
-local message_spots = {150,250,350,450,550,650}
+local message_spots = {150,200,350,450,550,650}
 
 go.property("current_index", nil)
 
 function init(self)
 end
-
+--[[
 local function place_message(total, object_list)
 	for i=1, total, 1 do
 		if i > 6 then
@@ -14,17 +14,17 @@ local function place_message(total, object_list)
 		
 		local current_object_position = go.get(object_list[i], "position")
 		--print("The current objects position is ",current_object_position)
-		go.set(object_list[i], "position", vmath.vector3(current_object_position.x, message_spots[i], 1.0))
+		--go.set(object_list[i], "position", vmath.vector3(current_object_position.x, message_spots[i], 1.0))
 		--print("The new position for the object is ",current_object_position)
 	end	
 end
-
+]]
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash(message_id) then
 		received_text = message["message_t"]
 		label.set_text("#gameword",received_text)
-		place_message(message["placement"], message["objects"])
+		--place_message(message["placement"], message["objects"])
 		local current_position = go.get(".", "position")
 		self.current_index = message["placement"]
 		print("this is the current index:", self.current_index)

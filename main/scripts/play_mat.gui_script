@@ -27,9 +27,8 @@ function on_input(self, action_id, action)
 		end
 		if action_id == hash("submit") and action.released then
 			local size = gui.get(text, "size")
-			local position = vmath.vector3(size.x,(size.y /2) + 150.0, 1.0)
-			local current_position = vmath.vector3(position.x,position.y,1.0)
-			local id = factory.create("#wordfactory", current_position)
+			local default_position = vmath.vector3(175.0, 150.0,1.0)
+			local id = factory.create("#wordfactory", default_position)
 			table.insert(message_objects, id)
 			local information = {message_t=self.message, placement=num_messages, objects=message_objects}
 			table.insert(message_indices, self.message)

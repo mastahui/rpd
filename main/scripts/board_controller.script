@@ -3,6 +3,12 @@ function on_message(self, message_id, message)
 	if message_id == hash("stack") then
 		print("In board controller")
 		message_list = message
-		for i=1, table.maxn(message_list) do print(message_list[i]) end
+		for i=1, table.maxn(message_list) do
+			local y_increment = 50
+			local current_position = go.get(message_list[i], "position")
+			local new_position = vmath.vector3(current_position.x, current_position.y + y_increment, current_position.z)
+			go.set_position(new_position, hash(message_list[i]))
+			print(go.get(message_list[i], "position"))
+		end
 	end
 end
