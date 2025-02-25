@@ -1,14 +1,12 @@
 name: "main"
 scale_along_z: 0
 embedded_instances {
-  id: "player"
+  id: "game"
+  children: "game_window"
+  children: "text_window"
   data: "components {\n"
   "  id: \"play\"\n"
   "  component: \"/main/play.gui\"\n"
-  "}\n"
-  "components {\n"
-  "  id: \"board\"\n"
-  "  component: \"/main/scripts/board_controller.script\"\n"
   "}\n"
   "embedded_components {\n"
   "  id: \"wordfactory\"\n"
@@ -17,4 +15,50 @@ embedded_instances {
   "\"\n"
   "}\n"
   ""
+}
+embedded_instances {
+  id: "text_window"
+  data: "components {\n"
+  "  id: \"board\"\n"
+  "  component: \"/main/scripts/board_controller.script\"\n"
+  "}\n"
+  "components {\n"
+  "  id: \"text_window_s\"\n"
+  "  component: \"/main/scripts/text_window_s.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"text_bg\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"default_animation: \\\"bg\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "textures {\\n"
+  "  sampler: \\\"texture_sampler\\\"\\n"
+  "  texture: \\\"/assets/sprites/sprites_atlas.atlas\\\"\\n"
+  "}\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 200.0\n"
+  "    y: 400.0\n"
+  "  }\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "game_window"
+  data: "embedded_components {\n"
+  "  id: \"game_bg\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"default_animation: \\\"game_bg\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "textures {\\n"
+  "  sampler: \\\"texture_sampler\\\"\\n"
+  "  texture: \\\"/assets/sprites/sprites_atlas.atlas\\\"\\n"
+  "}\\n"
+  "\"\n"
+  "}\n"
+  ""
+  position {
+    x: 760.0
+    y: 400.0
+  }
 }

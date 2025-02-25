@@ -9,33 +9,56 @@ textures {
 }
 nodes {
   position {
-    x: 65.0
-    y: 66.0
-  }
-  scale {
-    x: 0.5
-    y: 0.5
-    z: 0.5
-  }
-  type: TYPE_BOX
-  texture: "player_sprite/wuchacrab"
-  id: "delete"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: 890.0
+    x: 490.0
     y: 80.0
   }
   scale {
     x: 0.5
     y: 0.5
-    z: 0.5
   }
   type: TYPE_BOX
-  texture: "player_sprite/wuchaflexright"
-  id: "submit"
+  texture: "player_sprite/wuchacup"
+  id: "entry_button"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 140.0
+  }
+  scale {
+    x: 3.0
+    y: 2.0
+  }
+  size {
+    x: 100.0
+    y: 10.0
+  }
+  type: TYPE_TEXT
+  text: "Enter message"
+  font: "default"
+  id: "entry"
+  outline {
+    x: 0.702
+    y: 0.4
+    z: 0.502
+  }
+  line_break: true
+  parent: "entry_button"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 12.0
+  }
+  scale {
+    x: 0.1
+    y: 0.1
+  }
+  type: TYPE_BOX
+  texture: "player_sprite/wuchacrab"
+  id: "cursor"
+  parent: "entry"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -51,39 +74,8 @@ nodes {
   text: "SUBMIT MESSAGE"
   font: "default"
   id: "text"
-  parent: "submit"
+  parent: "entry_button"
   inherit_alpha: true
-}
-nodes {
-  position {
-    x: 468.0
-    y: 50.0
-  }
-  size {
-    x: 200.0
-    y: 5.0
-  }
-  type: TYPE_TEXT
-  text: "<text>"
-  font: "default"
-  id: "Entry"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    y: 100.0
-  }
-  scale {
-    x: 0.5
-    y: 0.5
-    z: 0.5
-  }
-  type: TYPE_BOX
-  texture: "player_sprite/wuchacrab"
-  id: "sprite"
-  parent: "Entry"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

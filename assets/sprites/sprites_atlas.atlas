@@ -1,13 +1,7 @@
 images {
-  image: "/assets/sprites/card.png"
-}
-images {
-  image: "/assets/sprites/player.png"
-}
-images {
   image: "/assets/sprites/bg.png"
 }
 images {
-  image: "/assets/sprites/text_label.png"
+  image: "/assets/sprites/game_bg.png"
 }
 extrude_borders: 2
