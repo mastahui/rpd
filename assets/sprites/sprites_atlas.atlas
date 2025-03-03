@@ -4,4 +4,7 @@ images {
 images {
   image: "/assets/sprites/game_bg.png"
 }
+images {
+  image: "/assets/sprites/text_message_bg.png"
+}
 extrude_borders: 2

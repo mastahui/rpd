@@ -2,16 +2,15 @@ local message_list = {}
 
 function on_message(self, message_id, message)
 	if message_id == hash("stack") then
-		print("In board controller")
 		message_list = message
 		for i=1, table.maxn(message_list) do
-			go.set_parent(message_list[i], "/game#text_window")
-			print(message_list[i],go.get_parent(message_list[i]))
+			local sprite_size = go.get(message_list[i], property)
+			go.set_parent(message_list[i], "/text_window")
 			local y_increment = 50
+			local parent_position = go.get_position("/text_window")
 			local current_position = go.get(message_list[i], "position")
-			local new_position = vmath.vector3(current_position.x, current_position.y + y_increment, current_position.z)
+			local new_position = vmath.vector3(parent_position.x + 110.0, current_position.y + y_increment, current_position.z)
 			go.set_position(new_position, hash(message_list[i]))
-			print(go.get(message_list[i], "position"))
 		end
 	end
 end

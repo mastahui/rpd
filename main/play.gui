@@ -31,7 +31,7 @@ nodes {
     y: 2.0
   }
   size {
-    x: 100.0
+    x: 150.0
     y: 10.0
   }
   type: TYPE_TEXT
@@ -64,17 +64,33 @@ nodes {
 }
 nodes {
   position {
+    x: 883.0
+    y: 80.0
+  }
+  size {
+    x: 100.0
     y: 100.0
   }
+  type: TYPE_BOX
+  id: "join_room"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
   size {
     x: 200.0
     y: 100.0
   }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
   type: TYPE_TEXT
-  text: "SUBMIT MESSAGE"
+  text: "Join Room"
   font: "default"
-  id: "text"
-  parent: "entry_button"
+  id: "join_text"
+  parent: "join_room"
   inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"

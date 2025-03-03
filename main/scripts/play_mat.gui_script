@@ -1,41 +1,52 @@
+require("main/scripts/actions")
 local num_messages = 1
 local message_objects = {}
 local enable_typing = false
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.message = ""
+	self.complete_text = ""
+	test()
+	roll(12)
 end	
 
 function text_input(self,action_id, action, text)
 	if text ~= nil and enable_typing == true then
 		if action_id == hash("type") then
 			if string.len(self.message)%40 == 0 then
-				self.message = self.message..'\n'
+				self.complete_text = self.complete_text..'\n'
 			end
 			self.message = self.message..action.text
+			self.complete_text = self.complete_text..action.text
 			gui.set_text(text, self.message)
 		end
 		if action_id == hash("backspace") and action.repeated then
 			local length = string.len(self.message)
 			self.message = string.sub(self.message, 0, length-1)
+			self.complete_text = string.sub(self.complete_text, 0, length-1)
 			gui.set_text(text, self.message)
 		end
 		if action_id == hash("submit") and action.released then
 			local default_position = vmath.vector3(175.0, 150.0,1.0)
 			local id = factory.create("#wordfactory", default_position)
 			table.insert(message_objects, id)
-			local information = {message_t=self.message, placement=num_messages, objects=message_objects}
-			msg.post(id, self.message, information)
+			local information = {message_t=self.complete_text, placement=num_messages, objects=message_objects}
+			msg.post(id, self.complete_text, information)
+			parse_message(self.message)
 			self.message = ""
+			self.complete_text = ""
 			num_messages = num_messages + 1
 			msg.post("/text_window#text_window_s", "stack", message_objects)
 			enable_typing = false
+			
 		end
 	end
 end
 function on_input(self, action_id, action)
 	local c_text = gui.get_node("entry")
 	local text_b = gui.get_node("entry_button")
+	local join_room = gui.get_node("join_room")
 	if action_id == hash("touch") then
 		if gui.pick_node(text_b, action.x, action.y) then
 			enable_typing = true
