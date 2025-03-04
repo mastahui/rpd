@@ -93,5 +93,37 @@ nodes {
   parent: "join_room"
   inherit_alpha: true
 }
+nodes {
+  position {
+    x: 500.0
+    y: 100.0
+  }
+  size {
+    x: 50.0
+    y: 50.0
+  }
+  type: TYPE_BOX
+  id: "selector"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 50.0
+    y: 50.0
+  }
+  color {
+    x: 0.0
+    y: 0.2
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "Cursor\n"
+  ""
+  font: "default"
+  id: "cursor_text"
+  parent: "selector"
+  inherit_alpha: true
+}
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

@@ -46,6 +46,7 @@ end
 function on_input(self, action_id, action)
 	local c_text = gui.get_node("entry")
 	local text_b = gui.get_node("entry_button")
+	local selector = gui.get_node("selector")
 	local join_room = gui.get_node("join_room")
 	if action_id == hash("touch") then
 		if gui.pick_node(text_b, action.x, action.y) then
@@ -53,5 +54,8 @@ function on_input(self, action_id, action)
 		end
 	end
 	text_input(self, action_id, action, c_text)
+	if action_id == hash("up") and action==then
+		print("up pressed")
+	end
 	
 end

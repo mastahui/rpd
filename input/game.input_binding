@@ -30,3 +30,7 @@ text_trigger {
   input: TEXT
   action: "type"
 }
+text_trigger {
+  input: TEXT
+  action: ""
+}
